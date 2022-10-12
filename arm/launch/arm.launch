@@ -11,13 +11,13 @@
   </include>
 
   <!--Robot Description from URDF-->
-  <param name="robot_description" command="$(find xacro)/xacro --inorder $(find arm_eden)/src/urdf/arm_eden.xacro"/>
+  <param name="robot_description" command="$(find xacro)/xacro --inorder $(find arm)/src/urdf/arm.xacro"/>
   <param name="use_gui" value="true"/>
 
   <!--Nodes-->
   <node name="joint_state_publisher_gui" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui"/>
   <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
-  <!-- <node name="spawn_model" pkg="gazebo_ros" type="spawn_model" args="-urdf -param robot_description -model arm_eden" output="screen"/> -->
-  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find arm_eden)/src/rviz/arm_eden.rviz" required="true"/>
+  <!-- <node name="spawn_model" pkg="gazebo_ros" type="spawn_model" args="-urdf -param robot_description -model arm" output="screen"/> -->
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find arm)/src/rviz/arm.rviz" required="true"/>
 
 </launch>

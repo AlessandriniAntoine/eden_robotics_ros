@@ -1,6 +1,6 @@
-# arm_eden
+# Arm
 
-ROS package for eden robotics project
+ROS package for arm functions
 
 ## Node creation
 

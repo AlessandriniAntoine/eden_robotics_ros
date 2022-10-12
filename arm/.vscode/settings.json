@@ -6,5 +6,12 @@
         "/home/alessandrini/Repos/Code/sofa/build/lib/python3/site-packages",
         "/home/alessandrini/Repos/Code/sofa/plugins/STLIB/python3/src",
         "/usr/local/lib/python3.8/dist-packages"
+    ],
+    "python.analysis.extraPaths": [
+        "/home/alessandrini/Documents/Robot/eden_ws/devel/lib/python3/dist-packages",
+        "/opt/ros/noetic/lib/python3/dist-packages",
+        "/home/alessandrini/Repos/Code/sofa/build/lib/python3/site-packages",
+        "/home/alessandrini/Repos/Code/sofa/plugins/STLIB/python3/src",
+        "/usr/local/lib/python3.8/dist-packages"
     ]
 }

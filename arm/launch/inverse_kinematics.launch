@@ -2,7 +2,7 @@
     <remap from="Camera/state/position" to="/Point/ref"/>
     <remap from="/command" to="Base/ref/position"/>
 
-    <node pkg="arm_eden" type="change_frame.py" name="change_frame"/>
+    <node pkg="arm" type="change_frame.py" name="change_frame"/>
     <node pkg="inverse_kinematics" type="inverse_kinematics" name="inverse_kinematics"/>
     
 </launch>
