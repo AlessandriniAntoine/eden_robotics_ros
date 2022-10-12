@@ -4,7 +4,7 @@ import rospy
 from geometry_msgs.msg import Point,Quaternion
 from kinematics.parameters import *
 
-class Forward_Node():
+class Forward_Node:
     """
     Node for the forward kinematics of the arm
     """

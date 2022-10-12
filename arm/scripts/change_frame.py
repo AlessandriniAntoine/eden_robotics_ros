@@ -5,7 +5,7 @@ import rospy
 from geometry_msgs.msg import Point,Quaternion
 from kinematics.parameters import *
 
-class Change_Frame_Node():
+class Change_Frame_Node:
     """
     Node for the forward kinematics of the arm
     """

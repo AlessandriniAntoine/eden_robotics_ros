@@ -38,7 +38,9 @@ qc = np.array([-h0-l3-hc,d1-d2+d3+dc,l0+l1+l2+lc])
 qe = np.array([-h0-l3-le,d1-d2+d3+de,l0+l1+l2+he])
 
 # initial configuration
-m = np.array([[0,0,1,qc[0]],[0,-1,0,qc[1]],[1,0,0,qc[2]],[0,0,0,1]])
+m = np.array([[0,0,1,qc[0]],[0,-1,0,qc[1]],[1,0,0,qc[2]],[0,0,0,1]]) # config camera in state frame
+m_e = np.array([[1,0,0,qe[0]],[0,-1,0,qe[1]],[0,0,-1,qe[2]],[0,0,0,1]]) # config end effector in state frame
+t_ce = np.dot(np.linalg.inv(m),m_e) # config end effector in camera frame
 
 # rotation
 s_w1 = np.array([0,0,-1])
@@ -54,3 +56,5 @@ s3 = changePointScrew(s_w3,np.array([0,0,0]),q3)
 s4 = changePointScrew(s_w4,np.array([0,0,0]),q4)
 
 screw_list = np.array([s1,s2,s3,s4]).T
+
+translation_ce = np.dot(t_ce,np.array([0,0,0,1])) # translation from camera to end effector in camera frame
