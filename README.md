@@ -1,7 +1,13 @@
 # eden_robotics_ros
+
 Contains all the ros package for eden robotic project
 
 Useful files are in this repository : [Eden Robotitcs Repos](https://github.com/AlessandriniAntoine/Eden_Robotics.git) (ros branch)
+
+<figure>
+    <img src="./Hardware/images/Onshape_robot.png" alt=""width="500px">
+    <figcaption>Figure 1 : Rviz Display for trajectory given by Xbox controller</figcaption>
+</figure>
 
 ## Packages
 
@@ -14,13 +20,15 @@ Useful files are in this repository : [Eden Robotitcs Repos](https://github.com/
 ## Installation
 
 First source Ros and create workspace
+
 ```console
 ~ $ source /opt/ros/noetic/setup.bash
 ~ $ mkdir -p arm_ws && cd arm_ws
 ~/arm_ws $ catkin_make
 ```
 
-Then clone repository in the src folder and build packages
+Then clone repository in the src folder and build packages*
+
 ```console
 ~/arm_ws/src $ git clone https://github.com/AlessandriniAntoine/eden_robotics_ros.git
 ~/arm_ws/src $ cd .. && catkin_make
@@ -28,21 +36,38 @@ Then clone repository in the src folder and build packages
 
 ## Launch
 
-Do not forget to source ROS and your package 
+Do not forget to source ROS and your package
+
 ```console
 ~/arm_ws $ source /opt/ros/noetic/setup.bash && source devel/setup.zsh
 ```
 
 Launch the following launch files :
+
 - rviz visualisation of the arm
+
 ```console
 ~/arm_ws $ roslaunch arm arm_rviz.launch
 ```
 
-- Control the robot with the xbox controller and the camera view
+- Inverse kinematics (point directly in robot frame)
+  
 ```console
 ~/arm_ws $ roslaunch arm inverse_kinematics.launch
 ```
+
+- Inverse kinematics in camera frame with rviz simulation :
+
+```console
+~/arm_ws $ roslaunch arm eden.launch
+```
+
+You can also display the robot using the robot simulink file (see Eden_Robotics repo)
+
+<figure>
+    <img src="./Hardware/images/Onshape_robot.png" alt=""width="500px">
+    <figcaption>Figure 2 : Matlab display</figcaption>
+</figure>
 
 ## Software
 
@@ -55,8 +80,7 @@ A requirement.txt file is present to install all python librairies.
 
 ## Hardware
 
-- Laser cutting
-- 3d printing
 - Dynamixel motors (XL430, XC,XM)
 - USB camera
 - Controller (Xbox)
+- Raspberry pi 3
