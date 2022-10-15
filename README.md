@@ -5,7 +5,7 @@ Contains all the ros package for eden robotic project
 Useful files are in this repository : [Eden Robotitcs Repos](https://github.com/AlessandriniAntoine/Eden_Robotics.git) (ros branch)
 
 <figure>
-    <img src="./Hardware/images/Onshape_robot.png" alt=""width="500px">
+    <img src="./images/rviz.gif" alt=""width="500px">
     <figcaption>Figure 1 : Rviz Display for trajectory given by Xbox controller</figcaption>
 </figure>
 
@@ -65,7 +65,7 @@ Launch the following launch files :
 You can also display the robot using the robot simulink file (see Eden_Robotics repo)
 
 <figure>
-    <img src="./Hardware/images/Onshape_robot.png" alt=""width="500px">
+    <img src="./images/matlab.gif" alt=""width="500px">
     <figcaption>Figure 2 : Matlab display</figcaption>
 </figure>
 
