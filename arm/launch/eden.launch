@@ -1,0 +1,39 @@
+<launch>
+
+    <!-- Robot urdf rile -->
+    <param name="robot_description"
+    command="$(find xacro)/xacro --inorder '$(find arm)/src/urdf/robot.xacro'" />
+
+    <!-- Display Camera -->
+    <node name="camera_display_node" pkg="camera" type="camera.py"/>
+
+    <!-- Receive joy data -->
+    <node name="joy_node" pkg="joy" type="joy_node">
+        <remap from="/joy" to="/Joystick/ref/joy"/>
+    </node>
+
+    <!-- transform joy command in point -->
+    <node name="conversion_node" pkg="arm" type="conversion.py"/>
+
+    <!-- transform from camera to state frame -->
+    <node name="change_frame" pkg="arm" type="change_frame.py" output="screen">
+        <remap from="/Robot/state/joint" to="/Robot/ref/joint"/>
+    </node>
+
+    <!-- send joint values -->
+    <node name="inverse_kinematics" pkg="inverse_kinematics" type="inverse_kinematics">
+        <remap from="/Command" to="/Robot/ref/position"/>
+    </node>
+
+    <!-- Combine joint values -->
+   <node pkg="robot_state_publisher" type="robot_state_publisher" name="rob_st_pub" >
+      <remap from="robot_description" to="robot_description" />
+      <remap from="/joint_states" to="/Robot/ref/joint" />
+    </node>    
+    
+    <!-- Show in Rviz -->
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find arm)/src/rviz/eden.rviz">
+    </node>
+
+</launch>
+

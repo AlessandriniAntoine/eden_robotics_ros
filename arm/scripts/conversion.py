@@ -8,12 +8,12 @@ import rospy
 from sensor_msgs.msg import Joy
 from geometry_msgs.msg import Point
 
-class Controller_Node:
+class Conversion_Node:
     """
-    Node for the forward kinematics of the arm
+    Node to convert joy command into position command
     """
 
-    def __init__(self,rosName="controller_node",rate=100):
+    def __init__(self,rosName="conversion_node",rate=100):
 
         # Init ROS2 node
         rospy.init_node(rosName, anonymous=True)
@@ -28,13 +28,13 @@ class Controller_Node:
 
 
         # init parameters
-        self.translation = translation_ce
-        self.position_zero = qe
+        self.translation = translation_ce[:3]
+        self.point_zero = qe
 
     def initGraph(self):
-        self.sub_joy = rospy.Subscriber('/Controller/ref',Joy,self.on_receive_callback,queue_size=10)
-        self.pub_camera = rospy.Publisher('Camera/ref/position',Point,queue_size=10)
-        self.pub_zero = rospy.Publisher('Base/ref/position',Point,queue_size=10)
+        self.sub_joy = rospy.Subscriber('/Joystick/ref/joy',Joy,self.on_receive_callback,queue_size=10)
+        self.pub_camera = rospy.Publisher('/Camera/ref/position',Point,queue_size=10)
+        self.pub_zero = rospy.Publisher('/Robot/ref/position',Point,queue_size=10)
 
     def on_receive_callback(self,data):
         self.axes = data.axes
@@ -49,9 +49,9 @@ class Controller_Node:
 
     def publish_zero(self):
         msg = Point()
-        msg.x = self.position_zero[0]
-        msg.y = self.position_zero[1]
-        msg.z = self.position_zero[2]
+        msg.x = self.point_zero[0]
+        msg.y = self.point_zero[1]
+        msg.z = self.point_zero[2]
         self.pub_zero.publish(msg)
 
     def update(self):
@@ -61,15 +61,16 @@ class Controller_Node:
             elif self.buttons[1]:
                 self.action = False
             elif self.buttons[4]:
-                self.publish_zero()    
-                time.sleep(10)
+                self.publish_zero()
+                self.action = False    
+                time.sleep(5)
             if self.action:
-                self.point_camera = self.translation + np.array([self.axes[1],self.axes[0],-self.axes[3]])
+                self.point_camera = self.translation + np.array([self.axes[1],self.axes[0],-self.axes[3]])*3e-2
                 self.publish_camera()
  
 def main():
-    controller = Controller_Node()
-    controller.update()
+    converter = Conversion_Node()
+    converter.update()
 
 if __name__ == '__main__':
     try:

@@ -7,9 +7,9 @@
  *
  * Code generation for model "inverse_kinematics".
  *
- * Model version              : 4.13
+ * Model version              : 4.51
  * Simulink Coder version : 9.7 (R2022a) 13-Nov-2021
- * C++ source code generated on : Fri Oct 14 03:12:01 2022
+ * C++ source code generated on : Sun Oct 16 00:22:54 2022
  *
  * Target selection: ert.tlc
  * Note: GRT includes extra infrastructure and instrumentation for prototyping
@@ -35,15 +35,66 @@ struct SL_Bus_inverse_kinematics_geometry_msgs_Point
 
 #endif
 
-#ifndef DEFINED_TYPEDEF_FOR_SL_Bus_inverse_kinematics_geometry_msgs_Quaternion_
-#define DEFINED_TYPEDEF_FOR_SL_Bus_inverse_kinematics_geometry_msgs_Quaternion_
+#ifndef DEFINED_TYPEDEF_FOR_SL_Bus_inverse_kinematics_ros_time_Time_
+#define DEFINED_TYPEDEF_FOR_SL_Bus_inverse_kinematics_ros_time_Time_
 
-struct SL_Bus_inverse_kinematics_geometry_msgs_Quaternion
+struct SL_Bus_inverse_kinematics_ros_time_Time
 {
-  real_T X;
-  real_T Y;
-  real_T Z;
-  real_T W;
+  real_T Sec;
+  real_T Nsec;
+};
+
+#endif
+
+#ifndef DEFINED_TYPEDEF_FOR_SL_Bus_ROSVariableLengthArrayInfo_
+#define DEFINED_TYPEDEF_FOR_SL_Bus_ROSVariableLengthArrayInfo_
+
+struct SL_Bus_ROSVariableLengthArrayInfo
+{
+  uint32_T CurrentLength;
+  uint32_T ReceivedLength;
+};
+
+#endif
+
+#ifndef DEFINED_TYPEDEF_FOR_SL_Bus_inverse_kinematics_std_msgs_Header_
+#define DEFINED_TYPEDEF_FOR_SL_Bus_inverse_kinematics_std_msgs_Header_
+
+struct SL_Bus_inverse_kinematics_std_msgs_Header
+{
+  uint32_T Seq;
+  SL_Bus_inverse_kinematics_ros_time_Time Stamp;
+  uint8_T FrameId[4];
+  SL_Bus_ROSVariableLengthArrayInfo FrameId_SL_Info;
+};
+
+#endif
+
+#ifndef DEFINED_TYPEDEF_FOR_SL_Bus_inverse_kinematics_std_msgs_String_
+#define DEFINED_TYPEDEF_FOR_SL_Bus_inverse_kinematics_std_msgs_String_
+
+struct SL_Bus_inverse_kinematics_std_msgs_String
+{
+  uint8_T Data[128];
+  SL_Bus_ROSVariableLengthArrayInfo Data_SL_Info;
+};
+
+#endif
+
+#ifndef DEFINED_TYPEDEF_FOR_SL_Bus_inverse_kinematics_sensor_msgs_JointState_
+#define DEFINED_TYPEDEF_FOR_SL_Bus_inverse_kinematics_sensor_msgs_JointState_
+
+struct SL_Bus_inverse_kinematics_sensor_msgs_JointState
+{
+  SL_Bus_inverse_kinematics_std_msgs_Header Header;
+  SL_Bus_inverse_kinematics_std_msgs_String Name[4];
+  SL_Bus_ROSVariableLengthArrayInfo Name_SL_Info;
+  real_T Position[4];
+  SL_Bus_ROSVariableLengthArrayInfo Position_SL_Info;
+  real_T Velocity[4];
+  SL_Bus_ROSVariableLengthArrayInfo Velocity_SL_Info;
+  real_T Effort[4];
+  SL_Bus_ROSVariableLengthArrayInfo Effort_SL_Info;
 };
 
 #endif
@@ -145,6 +196,29 @@ struct f_robotics_core_internal_Syst_T
 };
 
 #endif                              /* struct_f_robotics_core_internal_Syst_T */
+
+#ifndef struct_f_robotics_slcore_internal_bl_T
+#define struct_f_robotics_slcore_internal_bl_T
+
+struct f_robotics_slcore_internal_bl_T
+{
+  int32_T __dummy;
+};
+
+#endif                              /* struct_f_robotics_slcore_internal_bl_T */
+
+#ifndef struct_ros_slros_internal_block_Curr_T
+#define struct_ros_slros_internal_block_Curr_T
+
+struct ros_slros_internal_block_Curr_T
+{
+  boolean_T matlabCodegenIsDeleted;
+  int32_T isInitialized;
+  boolean_T isSetupComplete;
+  f_robotics_slcore_internal_bl_T SampleTimeHandler;
+};
+
+#endif                              /* struct_ros_slros_internal_block_Curr_T */
 
 #ifndef struct_ros_slroscpp_internal_block_P_T
 #define struct_ros_slroscpp_internal_block_P_T

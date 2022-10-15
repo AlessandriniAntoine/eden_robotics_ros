@@ -4,7 +4,6 @@
 
   <!-- send fake joint values -->
   <node name="joint_state_publisher_gui" pkg="joint_state_publisher_gui" type="joint_state_publisher_gui">
-    <!-- <param name="use_gui" value="TRUE"/> -->
   </node>
 
   <!-- Combine joint values -->

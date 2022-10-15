@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 
 import rospy
-from geometry_msgs.msg import Point,Quaternion
+from geometry_msgs.msg import Point
+from sensor_msgs.msg import JointState
 from kinematics.parameters import *
 
 class Forward_Node:
@@ -17,8 +18,8 @@ class Forward_Node:
         self.rosRate = rospy.Rate(rate)
 
         # init variables
-        self.config_init = m
-        self.config = m
+        self.config_init = m_e
+        self.config = m_e
         self.screw_list = screw_list
         self.thetalist = np.array([0,0,0,0])
         self.point = np.array([0,0,0,0])
@@ -28,10 +29,10 @@ class Forward_Node:
 
     def initGraph(self):
         self.pub = rospy.Publisher('EndEffector/state/position',Point,queue_size=10)
-        self.sub = rospy.Subscriber('/Angles/ref',Quaternion,self.on_receive_callback,queue_size=10)
+        self.sub = rospy.Subscriber('/Robot/ref/joint',JointState,self.on_receive_callback,queue_size=10)
 
     def on_receive_callback(self,data):
-        self.thetalist = np.array([data.x,data.y,data.z,data.w])
+        self.thetalist = np.array(data.position)
 
     def publish(self):
         msg = Point()

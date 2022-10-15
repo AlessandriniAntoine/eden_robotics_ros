@@ -1,21 +1,18 @@
 <launch>
 
-    <node name="camera_node" pkg="arm" type="camera.py"/>
-
-    <node name="joy_node" pkg="joy" type="joy_node">
-        <remap from="/joy" to="/Controller/ref"/>
-    </node>
-
-    <node name="controller_node" pkg="arm" type="controller.py">
-        <remap from="/Camera/ref/position" to="/Camera/state/position"/>
-    </node>
-
-    <node name="change_frame" pkg="arm" type="change_frame.py">
-        <remap from="/Camera/state/position" to="/Point/ref"/>
-    </node>
-
+    <!-- send joint values -->
     <node name="inverse_kinematics" pkg="inverse_kinematics" type="inverse_kinematics">
-        <remap from="/command" to="Base/ref/position"/>
+        <remap from="/Command" to="/Robot/ref/position"/>
+    </node>
+
+    <!-- Combine joint values -->
+   <node pkg="robot_state_publisher" type="robot_state_publisher" name="rob_st_pub" >
+      <remap from="robot_description" to="robot_description" />
+      <remap from="/joint_states" to="/Robot/ref/joint" />
+    </node>    
+    
+    <!-- Show in Rviz -->
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find arm)/src/rviz/eden.rviz">
     </node>
 
 </launch>

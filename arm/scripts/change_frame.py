@@ -2,7 +2,11 @@
 
 import time
 import rospy
-from geometry_msgs.msg import Point,Quaternion
+
+
+from geometry_msgs.msg import Point
+from sensor_msgs.msg import JointState
+
 from kinematics.parameters import *
 
 class Change_Frame_Node:
@@ -12,23 +16,22 @@ class Change_Frame_Node:
 
     def __init__(self,rosName="change_frame_node",rate=100):
 
-
         # Init ROS2 node
         rospy.init_node(rosName, anonymous=True)
         self.rosRate = rospy.Rate(rate)
 
         # init variables
-        self.config_init = m
+        self.config_init = m_c
 
         self.screw_list = screw_list
         self.thetalist = np.array([0,0,0,0])
 
-        self.point_s = np.array([-0.3311,0.05971,0.3464,1]) # point in base frame
-        self.point_b = np.array([0,0,0,1]) # point in end effector frame
-        self.point_b_p = np.array([0,0,0,1]) # point in end effector frame at time n-1
+        self.point_s = qe # point in base frame
+        self.point_b = translation_ce # point in end effector frame
+        self.point_b_p = translation_ce # point in end effector frame at time n-1
 
         # init publisher and subscriber
-        self.pub = rospy.Publisher('Base/ref/position',Point,queue_size=10)
+        self.pub = rospy.Publisher('/Robot/ref/position',Point,queue_size=10)
         time.sleep(1)
         self.publish()
         self.rosRate.sleep()
@@ -36,11 +39,11 @@ class Change_Frame_Node:
         self.initGraph()
 
     def initGraph(self):
-        self.sub_angles = rospy.Subscriber('/Angles/ref',Quaternion,self.on_receive_callback_angles,queue_size=10)
-        self.sub_position = rospy.Subscriber('Camera/state/position',Point,self.on_receive_callback_point,queue_size=10)
+        self.sub_joint = rospy.Subscriber('/Robot/state/joint',JointState,self.on_receive_callback_joint,queue_size=10)
+        self.sub_position = rospy.Subscriber('/Camera/ref/position',Point,self.on_receive_callback_point,queue_size=10)
 
-    def on_receive_callback_angles(self,data):
-        self.thetalist = np.array([data.x,data.y,data.z,data.w])
+    def on_receive_callback_joint(self,data):
+        self.thetalist = np.array(data.position)
 
     def on_receive_callback_point(self,data):
         self.point_b = np.array([data.x,data.y,data.z,1])
@@ -61,6 +64,7 @@ class Change_Frame_Node:
                 self.publish()
                 self.rosRate.sleep()
                 self.point_b_p = self.point_b.copy()
+
 
 def main():
     frame = Change_Frame_Node()
