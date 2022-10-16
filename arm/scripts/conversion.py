@@ -15,7 +15,7 @@ class Conversion_Node:
 
     def __init__(self,rosName="conversion_node",rate=100):
 
-        # Init ROS2 node
+        # Init ROS node
         rospy.init_node(rosName, anonymous=True)
         self.rosRate = rospy.Rate(rate)
         self.initGraph()

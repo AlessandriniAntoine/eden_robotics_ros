@@ -163,6 +163,7 @@ catkin_install_python(PROGRAMS
   scripts/forward_kinematics.py
   scripts/change_frame.py
   scripts/conversion.py
+  scripts/controller.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 

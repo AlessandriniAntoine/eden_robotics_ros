@@ -56,10 +56,10 @@ Launch the following launch files :
 ~/arm_ws $ roslaunch arm inverse_kinematics.launch
 ```
 
-- Inverse kinematics in camera frame with rviz simulation :
+- OpenLoop inverse kinematics in camera frame with rviz simulation :
 
 ```console
-~/arm_ws $ roslaunch arm eden.launch
+~/arm_ws $ roslaunch arm eden_openloop.launch
 ```
 
 You can also display the robot using the robot simulink file (see Eden_Robotics repo)

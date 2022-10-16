@@ -16,7 +16,7 @@ class Change_Frame_Node:
 
     def __init__(self,rosName="change_frame_node",rate=100):
 
-        # Init ROS2 node
+        # Init ROS node
         rospy.init_node(rosName, anonymous=True)
         self.rosRate = rospy.Rate(rate)
 

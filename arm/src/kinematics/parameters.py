@@ -6,6 +6,7 @@ Units :
     - weight : g
     - time : s
 """
+
 ###################
 # mechanical 
 ###################
@@ -58,3 +59,13 @@ s4 = changePointScrew(s_w4,np.array([0,0,0]),q4)
 screw_list = np.array([s1,s2,s3,s4]).T
 
 translation_ce = np.dot(t_ce,np.array([0,0,0,1])) # translation from camera to end effector in camera frame
+
+
+###################
+# Controller 
+###################
+
+ki = 0.5
+kp = 0.6
+sat = 1
+kb = 0.98
