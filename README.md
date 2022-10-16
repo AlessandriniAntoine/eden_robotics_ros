@@ -62,11 +62,16 @@ Launch the following launch files :
 ~/arm_ws $ roslaunch arm eden_openloop.launch
 ```
 
+<figure>
+    <img src="./images/rqt_plot_open_loop.gif" alt=""width="500px">
+    <figcaption>Figure 2 : Rqt plot on x axis for open loop</figcaption>
+</figure>
+
 You can also display the robot using the robot simulink file (see Eden_Robotics repo)
 
 <figure>
     <img src="./images/matlab.gif" alt=""width="500px">
-    <figcaption>Figure 2 : Matlab display</figcaption>
+    <figcaption>Figure 3 : Matlab display</figcaption>
 </figure>
 
 ## Software

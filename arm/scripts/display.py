@@ -54,7 +54,7 @@ if __name__ == '__main__':
     src_frame = 'origin'
     dst_frame = 'target'
     
-    rate = rospy.get_param('~rate', 1.)
+    rate = 100
     listener = tf.TransformListener()
     timer = rospy.Timer(rospy.Duration(1.0 / rate), cb)
     
