@@ -53,8 +53,11 @@ if __name__ == '__main__':
     point = np.array([0,0,0])
     src_frame = 'origin'
     dst_frame = 'target'
-    
-    rate = 100
+    try:
+        rate = rospy.get_param('/rate')
+    except :
+        rate = 100
+
     listener = tf.TransformListener()
     timer = rospy.Timer(rospy.Duration(1.0 / rate), cb)
     

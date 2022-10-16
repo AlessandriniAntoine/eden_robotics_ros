@@ -17,10 +17,14 @@ class ROS_Dynamixel_node:
         - rate : rate message in Hz
     """
 
-    def __init__(self,rosName="motors_dynamixel_node",rate = 1/0.01) :
+    def __init__(self,rosName="motors_dynamixel_node",rate = 100) :
 
         # Init ROS
         rospy.init_node(rosName, anonymous=True)
+        try:
+            rate = rospy.get_param('/rate')
+        except :
+            rate = rate
         self.rosRate = rospy.Rate(rate)
 
 

@@ -12,6 +12,10 @@ class Camera_Node:
 
         # Init ROS2 node
         rospy.init_node(rosName, anonymous=True)
+        try:
+            rate = rospy.get_param('/rate')
+        except :
+            rate = rate
         self.rosRate = rospy.Rate(rate)
 
         self.cap = cv2.VideoCapture(0)

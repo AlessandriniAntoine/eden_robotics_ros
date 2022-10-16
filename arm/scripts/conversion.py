@@ -17,6 +17,10 @@ class Conversion_Node:
 
         # Init ROS node
         rospy.init_node(rosName, anonymous=True)
+        try:
+            rate = rospy.get_param('/rate')
+        except :
+            rate = rate
         self.rosRate = rospy.Rate(rate)
         self.initGraph()
 
