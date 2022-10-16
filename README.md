@@ -65,7 +65,7 @@ Launch the following launch files :
 ~/arm_ws $ roslaunch arm inverse_kinematics.launch
 ```
 
-- OpenLoop inverse kinematics in camera frame with rviz simulation :
+- OpenLoop inverse kinematics in camera frame using Xbox controller with rviz simulation :
 
 ```console
 ~/arm_ws $ roslaunch arm eden_openloop.launch
@@ -92,6 +92,8 @@ In this project we used a Xbox controller. You can controle the robot with the f
 - Y : return to position zero
 - left joystick : Control X and Y axis movement (camera frame)
 - right joystick : control z axis movement (camera frame)
+
+If you want to change the joystick type, the [conversion.py](./arm/scripts/conversion.py) file need to be modify. The button and axes index need to be change to match the new one.
 
 ## Software
 
