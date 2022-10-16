@@ -9,6 +9,10 @@ Useful files are in this repository : [Eden Robotitcs Repos](https://github.com/
     <figcaption>Figure 1 : Rviz Display for trajectory given by Xbox controller</figcaption>
 </figure>
 
+<br/>
+<br/>
+<br/>
+
 <figure>
     <img src="./images/kinematics_graph.png" alt=""width="500px">
     <figcaption>Figure 2 : Kinematic schema</figcaption>
