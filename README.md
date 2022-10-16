@@ -64,7 +64,7 @@ Launch the following launch files :
 
 <figure>
     <img src="./images/rqt_plot_open_loop.gif" alt=""width="500px">
-    <figcaption>Figure 2 : Rqt plot on x axis for open loop</figcaption>
+    <figcaption>Figure 2 : Rqt plot on y axis for open loop</figcaption>
 </figure>
 
 You can also display the robot using the robot simulink file (see Eden_Robotics repo)
