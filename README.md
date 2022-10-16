@@ -9,6 +9,11 @@ Useful files are in this repository : [Eden Robotitcs Repos](https://github.com/
     <figcaption>Figure 1 : Rviz Display for trajectory given by Xbox controller</figcaption>
 </figure>
 
+<figure>
+    <img src="./images/kinematics_graph.png" alt=""width="500px">
+    <figcaption>Figure 2 : Kinematic schema</figcaption>
+</figure>
+
 ## Packages
 
 - arm : forward kinematics, change point frame ,gazebo,rviz and controller node
@@ -64,15 +69,25 @@ Launch the following launch files :
 
 <figure>
     <img src="./images/rqt_plot_open_loop.gif" alt=""width="500px">
-    <figcaption>Figure 2 : Rqt plot on y axis for open loop</figcaption>
+    <figcaption>Figure 3 : Rqt plot on y axis for open loop</figcaption>
 </figure>
 
 You can also display the robot using the robot simulink file (see Eden_Robotics repo)
 
 <figure>
     <img src="./images/matlab.gif" alt=""width="500px">
-    <figcaption>Figure 3 : Matlab display</figcaption>
+    <figcaption>Figure 4 : Matlab display</figcaption>
 </figure>
+
+## Joystick Control
+
+In this project we used a Xbox controller. You can controle the robot with the following button :
+
+- A : authorize movement
+- B : forbid movement
+- Y : return to position zero
+- left joystick : Control X and Y axis movement (camera frame)
+- right joystick : control z axis movement (camera frame)
 
 ## Software
 
