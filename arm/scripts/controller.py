@@ -4,7 +4,7 @@ import time
 import rospy
 
 
-from geometry_msgs.msg import Point
+from geometry_msgs.msg import Point,PoseStamped
 
 from kinematics.parameters import *
 
@@ -16,7 +16,7 @@ class CloseLoop_Controller_Node:
         - add an antiwindup
     """
 
-    def __init__(self,rosName="closedLoop_controller_node",rate=100):
+    def __init__(self,rosName="closedLoop_controller_node"):
 
 
         # Init ROS node
@@ -24,12 +24,12 @@ class CloseLoop_Controller_Node:
         try:
             rate = rospy.get_param('/rate')
         except :
-            rate = rate
+            rate = 100
         self.rosRate = rospy.Rate(rate)
+        self.init_graph()
 
         # parameters for the Proportionnal controller
         self.time = time.time()
-        self.t = [0]
 
         # controller parameters:
         self.ki = ki
@@ -51,7 +51,7 @@ class CloseLoop_Controller_Node:
 
     def init_graph(self):
         self.sub_ref = rospy.Subscriber('/Robot/ref/position',Point,self.on_receive_callback_ref,queue_size=10)
-        self.sub_mea = rospy.Subscriber('/Robot/state/position',Point,self.on_receive_callback_mea,queue_size=10)
+        self.sub_mea = rospy.Subscriber('/Robot/state/measure',PoseStamped,self.on_receive_callback_mea,queue_size=10)
         self.pub_com = rospy.Publisher('/Robot/ref/command',Point,queue_size=10)
 
     def publish(self):
@@ -65,7 +65,7 @@ class CloseLoop_Controller_Node:
         self.reference = np.array([data.x,data.y,data.z])
 
     def on_receive_callback_mea(self,data):
-        self.reference = np.array([data.x,data.y,data.z])
+        self.measure = np.array([data.pose.position.x,data.pose.position.y,data.pose.position.z])
 
     ########################################
     # Proportionnal controller functions
@@ -97,15 +97,17 @@ class CloseLoop_Controller_Node:
     ########################################
     
     def update(self):
-        # get real time step
-        t2 = time.time()
-        self.dt = t2-self.time
-        self.time = t2
+        while not rospy.is_shutdown():
+            
+            # get real time step
+            t2 = time.time()
+            self.dt = t2-self.time
+            self.time = t2
 
-        # get new ouput value
-        self.controller()
-        self.publish()
-        self.rosRate.sleep()
+            # get new ouput value
+            self.controller()
+            self.publish()
+            self.rosRate.sleep()
 
 
 def main():

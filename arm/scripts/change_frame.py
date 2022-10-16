@@ -14,14 +14,14 @@ class Change_Frame_Node:
     Node for the forward kinematics of the arm
     """
 
-    def __init__(self,rosName="change_frame_node",rate=100):
+    def __init__(self,rosName="change_frame_node"):
 
         # Init ROS node
         rospy.init_node(rosName, anonymous=True)
         try:
             rate = rospy.get_param('/rate')
         except :
-            rate = rate
+            rate = 100
         self.rosRate = rospy.Rate(rate)
 
         # init variables

@@ -65,7 +65,7 @@ translation_ce = np.dot(t_ce,np.array([0,0,0,1])) # translation from camera to e
 # Controller 
 ###################
 
-ki = 0.5
-kp = 0.6
+ki = 5
+kp = 0.7
 sat = 1
 kb = 0.98

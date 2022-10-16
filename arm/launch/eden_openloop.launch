@@ -1,6 +1,6 @@
 <launch>
     <!-- ros rate value -->
-    <param name="rate" value="60" />
+    <param name="rate" value="100" />
 
     <!-- Robot urdf rile -->
     <param name="robot_description"
@@ -42,4 +42,5 @@
     
     <!-- Vizualise on rqt -->
     <node name="rqt_plot"  pkg="rqt_plot" type="rqt_plot" args="/Robot/state/measure/pose/position/y /Robot/state/reference/point/y"/>
+    
 </launch>

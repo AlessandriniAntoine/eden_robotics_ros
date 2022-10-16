@@ -10,7 +10,7 @@ class Forward_Node:
     Node for the forward kinematics of the arm
     """
 
-    def __init__(self,rosName="forward_node",rate=100):
+    def __init__(self,rosName="forward_node"):
 
 
         # Init ROS node
@@ -18,7 +18,7 @@ class Forward_Node:
         try:
             rate = rospy.get_param('/rate')
         except :
-            rate = rate
+            rate = 100
         self.rosRate = rospy.Rate(rate)
 
         # init variables

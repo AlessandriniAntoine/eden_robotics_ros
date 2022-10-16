@@ -13,14 +13,16 @@ class Conversion_Node:
     Node to convert joy command into position command
     """
 
-    def __init__(self,rosName="conversion_node",rate=100):
+    def __init__(self,rosName="conversion_node"):
 
         # Init ROS node
         rospy.init_node(rosName, anonymous=True)
+        
+        # get rate if set as param
         try:
             rate = rospy.get_param('/rate')
         except :
-            rate = rate
+            rate = 100
         self.rosRate = rospy.Rate(rate)
         self.initGraph()
 
