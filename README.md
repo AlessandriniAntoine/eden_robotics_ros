@@ -89,3 +89,7 @@ A requirement.txt file is present to install all python librairies.
 - USB camera
 - Controller (Xbox)
 - Raspberry pi 3
+
+## Useful links
+
+- [Ros_documentation](http://wiki.ros.org/)
