@@ -164,6 +164,7 @@ catkin_install_python(PROGRAMS
   scripts/change_frame.py
   scripts/conversion.py
   scripts/controller.py
+  scripts/display.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 

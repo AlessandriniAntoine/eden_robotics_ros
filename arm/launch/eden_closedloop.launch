@@ -36,8 +36,10 @@
     </node>    
     
     <!-- Show in Rviz -->
-    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find arm)/src/rviz/eden.rviz">
-    </node>
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find arm)/src/rviz/eden.rviz"/>
 
+    <!-- Vizualise end effector position -->
+    <node name="position_robot_node" pkg="arm" type="display.py"/>
+    
 </launch>
 

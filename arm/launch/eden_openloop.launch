@@ -26,7 +26,7 @@
     </node>
 
     <!-- Combine joint values -->
-   <node pkg="robot_state_publisher" type="robot_state_publisher" name="rob_st_pub" >
+   <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher">
       <remap from="robot_description" to="robot_description" />
       <remap from="/joint_states" to="/Robot/ref/joint" />
     </node>    
@@ -35,5 +35,7 @@
     <node name="rviz" pkg="rviz" type="rviz" args="-d $(find arm)/src/rviz/eden.rviz">
     </node>
 
+    <!-- Vizualise end effector position -->
+    <node name="position_robot_node" pkg="arm" type="display.py"/>
+    
 </launch>
-
