@@ -1,5 +1,8 @@
 <launch>
 
+    <!-- ros rate value -->
+    <param name="rate" value="100" />
+    
     <!-- send joint values -->
     <node name="inverse_kinematics" pkg="inverse_kinematics" type="inverse_kinematics">
         <remap from="/Command" to="/Robot/ref/position"/>
