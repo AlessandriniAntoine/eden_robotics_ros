@@ -5,6 +5,9 @@ import tf
 import numpy as np
 from geometry_msgs.msg import PoseStamped,PointStamped,Point
 
+"""
+This node display the reference and the measure. It transform a tf topic from rviz into a PoseStamped
+"""
 
 def cb(event):
     global point
