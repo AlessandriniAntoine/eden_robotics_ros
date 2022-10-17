@@ -29,7 +29,8 @@ class Conversion_Node:
         # init variables
         self.action = False # authorize the robot to move
         self.axes = [0 for i in range(8)]
-        self.buttons = [0 for i in range(15)]        
+        self.buttons = [0 for i in range(15)] 
+        self.index = [[0,1,4],[1,0,3]] # button index can be change if joystick is not xbox (index[0] : button index, index[1]: axes index) To find the index you can you the joy_node node and print the /joy topic
         self.point_camera = np.array([0,0,0])
 
 
@@ -62,16 +63,16 @@ class Conversion_Node:
 
     def update(self):
         while not rospy.is_shutdown():
-            if self.buttons[0]:
+            if self.buttons[self.index[0][0]]:
                 self.action = True
-            elif self.buttons[1]:
+            elif self.buttons[self.index[0][1]]:
                 self.action = False
-            elif self.buttons[4]:
+            elif self.buttons[self.index[0][2]]:
                 self.publish_zero()
                 self.action = False    
                 time.sleep(5)
             if self.action:
-                self.point_camera = self.translation + np.array([self.axes[1],self.axes[0],-self.axes[3]])*3e-2
+                self.point_camera = self.translation + np.array([self.axes[self.index[1][0]],self.axes[self.index[1][1]],-self.axes[self.index[1][2]]])*3e-2
                 self.publish_camera()
  
 def main():
