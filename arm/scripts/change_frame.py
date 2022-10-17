@@ -11,7 +11,7 @@ from kinematics.parameters import *
 
 class Change_Frame_Node:
     """
-    Node for the forward kinematics of the arm
+    Node to change frame from camera frame to state frame
     """
 
     def __init__(self,rosName="change_frame_node"):
