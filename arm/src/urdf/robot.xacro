@@ -180,14 +180,14 @@ unit :
         <visual>
             <origin xyz="-6.93889e-18 0 0.062" rpy="-3.14159 -0 4.01069e-70" />
             <geometry>
-                <mesh filename="package://arm/src/meshes/side_2.stl"/>
+                <mesh filename="package://arm/src/meshes/right_side.stl"/>
             </geometry>
             <material name="pvc"/>
         </visual>
         <collision>
             <origin xyz="-6.93889e-18 0 0.062" rpy="-3.14159 -0 4.01069e-70" />
             <geometry>
-                <mesh filename="package://arm/src/meshes/side_2.stl"/>
+                <mesh filename="package://arm/src/meshes/right_side.stl"/>
             </geometry>
             <material name="pvc"/>
         </collision>
@@ -264,14 +264,14 @@ unit :
         <visual>
             <origin xyz="0 0 0.062" rpy="-3.14159 -0 4.01069e-70" />
             <geometry>
-                <mesh filename="package://arm/src/meshes/side.stl"/>
+                <mesh filename="package://arm/src/meshes/left_side.stl"/>
             </geometry>
             <material name="pvc"/>
         </visual>
         <collision>
             <origin xyz="0 0 0.062" rpy="-3.14159 -0 4.01069e-70" />
             <geometry>
-                <mesh filename="package://arm/src/meshes/side.stl"/>
+                <mesh filename="package://arm/src/meshes/left_side.stl"/>
             </geometry>
             <material name="pvc"/>
         </collision>
