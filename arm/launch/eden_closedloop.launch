@@ -44,7 +44,8 @@
     <node name="position_robot_node" pkg="arm" type="display.py"/>
     
     <!-- Vizualise on rqt -->
-    <node name="rqt_plot"  pkg="rqt_plot" type="rqt_plot" args="/Robot/state/measure/pose/position/y /Robot/state/reference/point/y"/>
-
+    <node name="rqt_plot_x"  pkg="rqt_plot" type="rqt_plot" args="/Robot/state/position/pose/position/x /Robot/state/reference/point/x"/>
+    <node name="rqt_plot_y"  pkg="rqt_plot" type="rqt_plot" args="/Robot/state/position/pose/position/y /Robot/state/reference/point/y"/>
+    <node name="rqt_plot_z"  pkg="rqt_plot" type="rqt_plot" args="/Robot/state/position/pose/position/z /Robot/state/reference/point/z"/>
 </launch>
 

@@ -22,17 +22,19 @@ class Forward_Node:
         self.rosRate = rospy.Rate(rate)
 
         # init variables
-        self.config_init = m_e
         self.config = m_e
-        self.screw_list = screw_list
         self.thetalist = np.array([0,0,0,0])
         self.point = np.array([0,0,0,0])
+
+        # init parameters 
+        self.screw_list = screw_list
+        self.config_init = m_e
 
         # init publisher and subscriber
         self.initGraph()
 
     def initGraph(self):
-        self.pub = rospy.Publisher('EndEffector/state/position',Point,queue_size=10)
+        self.pub = rospy.Publisher('/EndEffector/state/position',Point,queue_size=10)
         self.sub = rospy.Subscriber('/Robot/ref/joint',JointState,self.on_receive_callback,queue_size=10)
 
     def on_receive_callback(self,data):

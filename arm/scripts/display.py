@@ -49,7 +49,7 @@ def on_receive_callback(data):
 
 if __name__ == '__main__':
     rospy.init_node('display_position_node')
-    pub_state = rospy.Publisher('/Robot/state/measure', PoseStamped, queue_size=10)
+    pub_state = rospy.Publisher('/Robot/state/position', PoseStamped, queue_size=10)
     pub_ref = rospy.Publisher('/Robot/state/reference',PointStamped,queue_size=10)
     sub_ref = rospy.Subscriber('/Robot/ref/position',Point,on_receive_callback,queue_size=10)
 

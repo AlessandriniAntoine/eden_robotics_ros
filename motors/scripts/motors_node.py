@@ -38,7 +38,7 @@ class ROS_Dynamixel_node:
 
         # init variables
         self.goalPositions = np.array([0 for _ in self.ids])
-        self.rotations = np.array([0 for _ in self.ids])
+        self.joints = np.array([0 for _ in self.ids])
         self.current = np.array([0 for _ in self.ids])
         self.present_position = np.array([0 for _ in self.ids])
 
@@ -78,7 +78,7 @@ class ROS_Dynamixel_node:
         self.pub_pp.publish(msg)
 
     def on_receive_callback(self,data):
-        self.rotations = np.array(data.position)
+        self.joints = np.array(data.position)
 
     ############################## 
     # Actuate functions
@@ -86,10 +86,10 @@ class ROS_Dynamixel_node:
 
     def getGoalPositions(self):
         """ transform displacements of the cable into a rotation of the motor"""
-        rot = self.rotations*self.gearRatio
-        rot = rot*4095/(2*math.pi)
-        rot = self.initPosition+self.orientation*rot
-        self.goalPositions = rot.astype(int)
+        pos = self.joints*self.gearRatio
+        pos = pos*4095/(2*math.pi)
+        pos = self.initPosition+self.orientation*pos
+        self.goalPositions = pos.astype(int)
             
     def actuate(self):
         

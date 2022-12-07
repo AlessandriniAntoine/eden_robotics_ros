@@ -1,20 +1,28 @@
 <?xml version="1.0"?>
 <robot>
 
-<material name="bearing_material">
-<color rgba="0.647059 0.647059 0.647059 1.0"/>
-</material>
+    <material name="bearing_material">
+        <color rgba="0.647059 0.647059 0.647059 1.0"/>
+    </material>
 
-<material name="pvc">
-<color rgba="0.917647 0.917647 0.917647 1.0"/>
-</material>
+    <material name="xl430_material">
+        <color rgba="0.501961 0.501961 0.501961 1.0"/>
+    </material>
 
-<material name="wood">
-<color rgba="0.917647 0.72549 0.490196 1.0"/>
-</material>
+    <material name="pvc">
+        <color rgba="0.917647 0.917647 0.917647 1.0"/>
+    </material>
 
-<material name="pla">
-<color rgba="0.87451 0.447059 0.317647 1.0"/>
-</material>
+    <material name="plywood">
+        <color rgba="0.917647 0.72549 0.490196 1.0"/>
+    </material>
 
+    <material name="pla">
+        <color rgba="0.87451 0.447059 0.317647 1.0"/>
+    </material>
+
+    <material name="steel">
+        <color rgba="0.615686 0.811765 0.929412 1.0"/>
+    </material>
+    
 </robot>
